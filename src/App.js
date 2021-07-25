@@ -4,6 +4,14 @@ import DisplayQuote from "./components/DisplayQuote";
 import axios from 'axios';
 
 function App() {
+    const initQuote = {
+        character: "Waylon Smithers",
+        characterDirection: "Left",
+        image: "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FWaylonSmithers.png?1497567511840",
+        quote: "I think women and seamen don't mix"
+    }
+
+    const [quoteChar, setQuoteChar] = React.useState(initQuote);
     const getQuote = () => {
         // Send the request
         axios
@@ -16,8 +24,6 @@ function App() {
                 setQuoteChar(data[0]);
             });
     };
-    const [quoteChar, setQuoteChar] = React.useState(getQuote);
-    console.log(getQuote());
     return (
     <div className="App">
         <button type="button" onClick={getQuote}>Get another quote</button>
